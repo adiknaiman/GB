@@ -117,7 +117,7 @@ int main()
 	//ДЗ_04_01
 	int n;
 	printf("Enter a decimal number to convert to binary code:\n");
-	scanf_s("%d", &n);
+	scanf("%d", &n);
 	printf("Your number in binary code: \n");
 	decToBin(n);
 	printf("\n\n");
@@ -126,14 +126,15 @@ int main()
 
 	int a, b;
 	printf("Enter a number: \n");
-	scanf_s("%d", &a);
+	scanf("%d", &a);
 	printf("Enter its exponent: \n");
-	scanf_s("%d", &b);
+	scanf("%d", &b);
 	power(a, b);
 	printf("Recursive: %d to the power of %d is: ", a, b);
 	print_int(power(a, b));
 	printf("Recursive(even, odd powers): %d to the power of %d is: ", a, b);
 	print_int(power1(a, b));
+	printf("\n");
 
 
 	//ДЗ_04_03
