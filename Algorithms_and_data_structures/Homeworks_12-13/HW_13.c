@@ -53,7 +53,7 @@ T popOneLinkStack(OneLinkList* stack) {
 
 int possibleNumber(){
     int i = rand() % 100;
-    if (i < 75){
+    if (i < 80){
         return 0;
     } else {
         return 1;
@@ -93,13 +93,13 @@ void depthTraversStack(OneLinkList* Stack, int** array, int st) {
     printf("%3d", st);
     pushOneLinkStack(Stack,st);
     visited[st] = 1;
-        for (int j = 0; j < SIZE; j++)
+    for (int j = 0; j < SIZE; j++)
+    {
+        if (array[st][j] == 1 && visited[j] != 1)
         {
-            if (array[st][j] == 1 && visited[j] != 1)
-            {
-                depthTraversStack(Stack, array,j);
-            }
+            depthTraversStack(Stack, array,j);
         }
+    }
     popOneLinkStack(Stack);
 }
 void resetArr() {
@@ -130,7 +130,6 @@ void printIntArray(int* array, int size) {
 void depthTravers(int** array, int st) {
     int r;
     printf("%3d", st);
-    int adj = 0;
     visited[st] = 1;
     for (r = 0; r < SIZE; ++r) {
         if (array[st][r] == 1 && !visited[r]) {
@@ -150,6 +149,24 @@ void adjCount (int** matrix, const int size){
         }
     }
 }
+int traversalLinks[SIZE] = {0};
+void traversalCount(int** array, int st) {
+
+
+    for (int j = 0; j < SIZE; j++)
+    {
+        if (array[st][j] == 1)
+        {
+            traversalLinks[j]++;
+        }
+    }
+    st++;
+    if (st < SIZE - 1) {
+        traversalCount(array, st);
+    }
+}
+
+
 
 int main() {
     srand(time(NULL));
@@ -203,9 +220,11 @@ int main() {
         printf("%3c", i + 65);
     }
     printf("\n");
+
     adjCount(matrix, SIZE);
     printIntArray(adjLinks, SIZE);
-
+    traversalCount(matrix, 0);
+    printIntArray(traversalLinks, SIZE);
 
 
     printf("\n---------------------------------------------------\n\n");
