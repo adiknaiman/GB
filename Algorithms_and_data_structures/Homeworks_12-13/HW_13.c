@@ -6,7 +6,7 @@
 #define true 1 == 1
 #define false 1 != 1
 typedef int boolean;
-#define SIZE 14
+#define SIZE 4
 
 typedef struct OneLinkNode {
     int dat;
@@ -53,7 +53,7 @@ T popOneLinkStack(OneLinkList* stack) {
 
 int possibleNumber(){
     int i = rand() % 100;
-    if (i < 80){
+    if (i < 90){
         return 0;
     } else {
         return 1;
@@ -155,7 +155,7 @@ void traversalCount(int** array, int st) {
 
     for (int j = 0; j < SIZE; j++)
     {
-        if (array[st][j] == 1)
+        if (array[st][j] == 1 && st != j)
         {
             traversalLinks[j]++;
         }
